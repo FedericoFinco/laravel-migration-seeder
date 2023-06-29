@@ -31,8 +31,23 @@
                             <td>{{$train->arrival_time}}</td>
                             <td>{{$train->train_code}}</td>
                             <td>{{$train->carriages_number}}</td>
-                            <td>{{$train->on_time}}</td>
-                            <td>{{$train->cancelled}}</td>
+                            {{-- @php
+                                if ($train->on_time == 1) {
+                                    $train->on_time = 'yes';
+                                }else{
+                                    $train->on_time = 'no';
+                                }
+                            @endphp --}}
+                            @if ($train->on_time == 1)
+                                <td>yes</td>
+                            @else
+                                <td>no</td>
+                            @endif
+                            @if ($train->cancelled == 1)
+                                <td>yes</td>
+                            @else
+                                <td>no</td>
+                            @endif
                         </tr>
                     @endforeach
                 
